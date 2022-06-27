@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="chosen" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isAnswer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="priority" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
+        <attribute name="pass" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pass_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="repeatNum" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer"/>
+    </entity>
+    <entity name="Sentence" representedClassName="Sentence" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sentence" optional="YES" attributeType="String"/>
+        <relationship name="vocabulary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vocabulary" inverseName="sentences" inverseEntity="Vocabulary"/>
+    </entity>
+    <entity name="TypeDefine" representedClassName="TypeDefine" syncable="YES">
+        <attribute name="define" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="vocabulary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vocabulary" inverseName="typeDefines" inverseEntity="Vocabulary"/>
+    </entity>
+    <entity name="Vocabulary" representedClassName="Vocabulary" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
+        <attribute name="remember" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="watch" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="vocabulary" inverseEntity="Sentence"/>
+        <relationship name="typeDefines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TypeDefine" inverseName="vocabulary" inverseEntity="TypeDefine"/>
+    </entity>
+    <elements>
+        <element name="Vocabulary" positionX="-522.875" positionY="-67.96875" width="128" height="163"/>
+        <element name="Sentence" positionX="-232.4375" positionY="60.91015625" width="128" height="88"/>
+        <element name="Question" positionX="234.8828125" positionY="220.42578125" width="128" height="148"/>
+        <element name="Answer" positionX="-88.70703125" positionY="204.125" width="128" height="118"/>
+        <element name="TypeDefine" positionX="-261.703125" positionY="194.16796875" width="128" height="103"/>
+    </elements>
+</model>
